@@ -124,32 +124,6 @@ public:
 
     }
 
-    bool AccountPromotion(Player* player)
-    {
-        std::string ip_address;
-        QueryResult result = LoginDatabase.PQuery(
-            "SELECT last_ip FROM account WHERE id = %u",
-            player->GetSession()->GetAccountId());
-
-        if (result)
-        {
-            Field* fields = result->Fetch();
-            ip_address = fields[0].GetCString();
-
-            QueryResult result1 = CharacterDatabase.PQuery("SELECT `account` FROM `account_promotion` WHERE `account` = %u OR `ip` = '%s'", player->GetSession()->GetAccountId(), fields[0].GetCString());
-            if (result1)
-            {
-                Field* pField = result1->Fetch();
-                uint32 account = pField[0].GetUInt32();
-                if (account)
-                    return true;
-            }
-            return false;
-        }
-        return false;
-    }
-};
-
 
 void AddSC_npc_promotion() {
     new announce_module();
