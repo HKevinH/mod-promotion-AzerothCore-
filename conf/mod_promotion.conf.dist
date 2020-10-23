@@ -1,0 +1,8 @@
+[MOD_PROMOTION MODULE CONFIG]
+
+#
+# Enable Hello World message at server start 
+# default: true
+#
+
+announce_module.enableHelloWorld=true
