@@ -13,6 +13,7 @@
 #include "DatabaseEnv.h"
 #include "WorldSession.h"
 #include "mod_promotion.h"
+#include "World.h"
 
 static bool promotionEnable, mountEnable;
 static int promotionCount, moneyRewardConst, mountPromotion;
@@ -22,7 +23,12 @@ public:
     announce_module() : PlayerScript("announce_module") { }
 
     void OnLogin(Player* player) override {
-        if (sConfigMgr->GetBoolDefault("announce_module.enableHelloWorld", true)) {
+        if (sConfigMgr->GetBoolDefault("announce_module.enableHelloWorld", true))
+        {
+            ChatHandler(player->GetSession()).SendSysMessage("Hello World from Promotion-Module! - By Asmadeuxx");
+        }
+        else
+        {
             ChatHandler(player->GetSession()).SendSysMessage("Hello World from Promotion-Module! - By Asmadeuxx");
         }
     }
@@ -548,10 +554,14 @@ public:
             break;
         case 1014:
             PaladinPromotionDps(player);
-        default:
             break;
         }
     }
+
+        else
+        {
+            SendGossipMenuFor(player, 80000, creature);
+        }
 
         return true;
     }
