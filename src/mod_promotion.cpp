@@ -14,8 +14,8 @@
 #include "WorldSession.h"
 #include "mod_promotion.h"
 
-static bool promotionEnable;
-static int promotionCount, MoneyRewardConst;
+static bool promotionEnable, mountEnable;
+static int promotionCount, moneyRewardConst, mountPromotion;
 
 class announce_module : public PlayerScript{
 public:
@@ -23,7 +23,7 @@ public:
 
     void OnLogin(Player* player) override {
         if (sConfigMgr->GetBoolDefault("announce_module.enableHelloWorld", true)) {
-            ChatHandler(player->GetSession()).SendSysMessage("Hello World from Promotion-Module!");
+            ChatHandler(player->GetSession()).SendSysMessage("Hello World from Promotion-Module! - By Asmadeuxx");
         }
     }
 };
@@ -492,10 +492,11 @@ public:
         player->learnSpell(SKILL_RIDING_FLYING);
         player->learnSpell(SKILL_RIDING_ARTISING);
 
-        // Mounts
-        player->learnSpell(42777); //Swift Spectral Tiger
-        player->learnSpell(37015); //Swift Nether Drake
-
+        if (mountEnable)
+        {
+            player->learnSpell(sConfigMgr->GetIntDefault("mountPromotion", 42777)); //Swift Spectral Tiger
+        }
+        
         //Bags
         for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
             if (Item* bag = player->GetItemByPos(INVENTORY_SLOT_BAG_0, slot))
@@ -551,6 +552,7 @@ public:
             break;
         }
     }
+
         return true;
     }
 };
@@ -576,7 +578,9 @@ public:
 
             promotionEnable = sConfigMgr->GetBoolDefault("promotionEnable.enable", true);
             promotionCount = sConfigMgr->GetIntDefault("promotion.count", 1);
-            MoneyRewardConst = sConfigMgr->GetIntDefault("MoneyRewardValue", 25000000);
+            moneyRewardConst = sConfigMgr->GetIntDefault("MoneyRewardValue", 25000000);
+            mountPromotion = sConfigMgr->GetIntDefault("mountPromotion", 42277);
+            mountEnable = sConfigMgr->GetBoolDefault("mountEnable.enable", true);
         }
     }
 };

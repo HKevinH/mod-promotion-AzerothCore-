@@ -61,3 +61,19 @@ promotion.count = 1
 #
 
 MoneyRewardValue = 25000000
+
+#
+#
+#     MountPromotion
+#
+#     Description: Here You Put The Spells Of The Promotion Mounts
+#
+#     Example: 42277 - ( Swift Spectral Tiger - ID SPELL)
+#              37015 - ( Swift Nether Drake - ID SPELL)
+#
+#     Default: mountPromotion = 42277
+#     Default: mountEnable.enable = true (Mounts Enabled In The Promotion)
+#
+
+mountEnable.enable = true
+mountPromotion = 42277
