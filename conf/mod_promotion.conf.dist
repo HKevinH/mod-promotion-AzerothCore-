@@ -1,8 +1,49 @@
-[MOD_PROMOTION MODULE CONFIG]
+#######################################################
+### AzerothCore Module Promotion configuration file ###
+#######################################################
+[worldserver]
 
+###################################################################################################
+# SECTION INDEX
 #
+#    ANNOUNCE ENABLE
+#    SETTIGNS MODULE
+#    CLASS ENABLE
+#
+###################################################################################################
+
+###################################################################################################
+# 
+# ANNOUNCE ENABLE
 # Enable Hello World message at server start 
 # default: true
 #
-
+#
 announce_module.enableHelloWorld=true
+
+######################################################################################################
+#	SETTIGNS MODULE
+#
+#		NpcPromotion.enable
+#
+#			Description:	Variable that enables or disables the module
+#
+#			Example:	"true" - (Enabled)
+#						"false" - (Disabled)
+#
+#        Default:     true
+
+promotionEnable.enable=true
+
+#
+#
+#	    Promotion.count
+#
+#		Description:	Amount of promotion per account.
+#
+#			Example:	1 - (One)
+#						2 - (Two)
+#
+#        Default:     1
+
+promotion.count = 1
