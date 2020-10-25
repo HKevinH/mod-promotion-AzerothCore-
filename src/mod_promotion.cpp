@@ -15,7 +15,7 @@
 #include "mod_promotion.h"
 
 static bool promotionEnable;
-static int promotionCount;
+static int promotionCount, MoneyRewardConst;
 
 class announce_module : public PlayerScript{
 public:
@@ -94,6 +94,11 @@ public:
         SendGossipMenuFor(player, 68, creature);
 
         return true;
+    }
+
+    void MoneyReward(Player* player)
+    {
+        player->ModifyMoney(sConfigMgr->GetIntDefault("MoneyRewardValue", 25000000));
     }
 
     void WarriorPromotionDps(Player* player)
@@ -478,15 +483,14 @@ public:
                 // Level
                 player->GiveLevel(80);
 
-        //Money 5k
-        player->ModifyMoney(25000000);
+        //Money 2,5k
+         MoneyReward(player);
 
         // Riding 
         player->learnSpell(SKILL_RIDING_75);
         player->learnSpell(SKILL_RIDING_100);
         player->learnSpell(SKILL_RIDING_FLYING);
         player->learnSpell(SKILL_RIDING_ARTISING);
-
 
         // Mounts
         player->learnSpell(42777); //Swift Spectral Tiger
@@ -572,6 +576,7 @@ public:
 
             promotionEnable = sConfigMgr->GetBoolDefault("promotionEnable.enable", true);
             promotionCount = sConfigMgr->GetIntDefault("promotion.count", 1);
+            MoneyRewardConst = sConfigMgr->GetIntDefault("MoneyRewardValue", 25000000);
         }
     }
 };

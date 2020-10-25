@@ -47,3 +47,17 @@ promotionEnable.enable=true
 #        Default:     1
 
 promotion.count = 1
+
+#
+#
+#     MoneyRewardPromotion
+#
+#     Description: Amount of promotion for character
+#
+#     Example: 10 - (10 cobber)
+#              25000000 - (2500 gold)
+#
+#     Default: 25000000
+#
+
+MoneyRewardValue = 25000000
