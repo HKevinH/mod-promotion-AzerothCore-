@@ -15,8 +15,9 @@
 #include "mod_promotion.h"
 #include "World.h"
 
-static bool promotionEnable, mountEnable;
-static int promotionCount, moneyRewardConst, mountPromotion;
+static bool promotionEnable, mountEnable, bagEnable;
+static int promotionCount, moneyRewardConst, mountPromotion, bagReward;
+static int classConfArmor;
 
 class announce_module : public PlayerScript{
 public:
@@ -109,126 +110,126 @@ public:
 
     void WarriorPromotionDps(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_WARRIOR_DPS_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_WARRIOR_DPS_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_WARRIOR_DPS_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_WARRIOR_DPS_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_WARRIOR_DPS_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_WARRIOR_DPS_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_WARRIOR_DPS_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_WARRIOR_DPS_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_WARRIOR_DPS_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_WARRIOR_DPS_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_WARRIOR_DPS_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_WARRIOR_DPS_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_WARRIOR_DPS_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_WARRIOR_DPS_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_WARRIOR_DPS_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, EQUIPMENT_SLOT_WARRIOR_DPS_OFFHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_WARRIOR_DPS_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_HEAD", 41350)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_NECK", 45812)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_SHOULDERS", 41351)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_CHEST", 41353)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_WAIST", 41352)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_LEGS", 41347)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_FEET", 41348)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_WRISTS", 41354)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_HANDS", 41349)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_FINGER1", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_FINGER2", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_TRINKET1", 37064)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_TRINKET2", 38359)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_BACK", 45811)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_MAINHAND", 37108)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_OFFHAND", 36962)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_RANGED", 36981)), true);
     }
 
     void WarriorPromotionTank(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_WARRIOR_TANK_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_WARRIOR_TANK_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_WARRIOR_TANK_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_WARRIOR_TANK_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_WARRIOR_TANK_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_WARRIOR_TANK_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_WARRIOR_TANK_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_WARRIOR_TANK_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_WARRIOR_TANK_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_WARRIOR_TANK_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_WARRIOR_TANK_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_WARRIOR_TANK_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_WARRIOR_TANK_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_WARRIOR_TANK_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_WARRIOR_TANK_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, EQUIPMENT_SLOT_WARRIOR_TANK_OFFHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_WARRIOR_TANK_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_HEAD", 41350)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_NECK", 45812)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_SHOULDERS", 41351)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_CHEST", 41353)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_WAIST", 41352)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_LEGS", 41347)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_FEET", 41348)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_WRISTS", 41354)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_HANDS", 41349)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_FINGER1", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_FINGER2", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_TRINKET1", 36993)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_TRINKET2", 38359)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_BACK", 45811)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_MAINHAND", 36984)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_OFFHAND", 37107)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_RANGED", 36981)), true);
     }
 
     void PaladinPromotionTank(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_PALADIN_TANK_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_PALADIN_TANK_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_PALADIN_TANK_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_PALADIN_TANK_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_PALADIN_TANK_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_PALADIN_TANK_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_PALADIN_TANK_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_PALADIN_TANK_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_PALADIN_TANK_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_PALADIN_TANK_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_PALADIN_TANK_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_PALADIN_TANK_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_PALADIN_TANK_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_PALADIN_TANK_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_PALADIN_TANK_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, EQUIPMENT_SLOT_PALADIN_TANK_OFFHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_PALADIN_TANK_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_HEAD", 41350)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_NECK", 45812)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_SHOULDERS", 41351)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_CHEST", 41353)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_WAIST", 41352)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_LEGS", 41347)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_FEET", 41348)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_WRISTS", 41354)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_HANDS", 41349)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_FINGER1", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_FINGER2", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_TRINKET1", 36993)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_TRINKET2", 38359)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_BACK", 45811)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_MAINHAND", 36984)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_OFFHAND", 37107)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_RANGED", 38363)), true);
     }
 
     void PaladinPromotionHeal(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_PALADIN_HEAL_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_PALADIN_HEAL_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_PALADIN_HEAL_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_PALADIN_HEAL_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_PALADIN_HEAL_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_PALADIN_HEAL_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_PALADIN_HEAL_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_PALADIN_HEAL_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_PALADIN_HEAL_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_PALADIN_HEAL_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_PALADIN_HEAL_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_PALADIN_HEAL_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_PALADIN_HEAL_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_PALADIN_HEAL_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_PALADIN_HEAL_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, EQUIPMENT_SLOT_PALADIN_HEAL_OFFHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_PALADIN_HEAL_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_HEAD", 42728)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_NECK", 45813)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_SHOULDERS", 42727)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_CHEST", 42725)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_WAIST", 42729)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_LEGS", 42726)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_FEET", 42730)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_WRISTS", 42723)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_HANDS", 42724)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_FINGER1", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_FINGER2", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_TRINKET1", 37111)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_TRINKET2", 36972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_BACK", 45810)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_MAINHAND", 37060)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_OFFHAND", 37061)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_RANGED", 38364)), true);
     }
 
     void PaladinPromotionDps(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_PALADIN_DPS_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_PALADIN_DPS_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_PALADIN_DPS_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_PALADIN_DPS_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_PALADIN_DPS_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_PALADIN_DPS_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_PALADIN_DPS_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_PALADIN_DPS_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_PALADIN_DPS_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_PALADIN_DPS_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_PALADIN_DPS_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_PALADIN_DPS_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_PALADIN_DPS_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_PALADIN_DPS_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_PALADIN_DPS_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_PALADIN_DPS_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_HEAD", 41350)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_NECK", 45812)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_SHOULDERS", 41351)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_CHEST", 41353)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_WAIST", 41352)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_LEGS", 41347)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_FEET", 41348)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_WRISTS", 41354)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_HANDS", 41349)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_FINGER1", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_FINGER2", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_TRINKET1", 37064)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_TRINKET2", 38359)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_BACK", 45811)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_MAINHAND", 37108)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_RANGED", 38362)), true);
     }
 
     void HunterPromotion(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_HUNTER_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_HUNTER_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_HUNTER_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_HUNTER_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_HUNTER_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_HUNTER_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_HUNTER_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_HUNTER_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_HUNTER_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_HUNTER_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_HUNTER_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_HUNTER_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_HUNTER_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_HUNTER_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_HUNTER_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_HUNTER_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_HEAD", 43447)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_NECK", 45812)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_SHOULDERS", 43449)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_CHEST", 43445)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_WAIST", 43442)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_LEGS", 43448)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_FEET", 43443)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_WRISTS", 43444)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_HANDS", 43446)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_FINGER1", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_FINGER2", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_TRINKET1", 37064)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_TRINKET2", 38359)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_BACK", 45811)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_MAINHAND", 36980)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_RANGED", 37050)), true);
     }
 
     void RoguePromotion(Player* player)
@@ -491,7 +492,7 @@ public:
 
         //Money 2,5k
          MoneyReward(player);
-
+        player->UpdateSkillsToMaxSkillsForLevel();
         // Riding 
         player->learnSpell(SKILL_RIDING_75);
         player->learnSpell(SKILL_RIDING_100);
@@ -504,12 +505,15 @@ public:
         }
         
         //Bags
-        for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
-            if (Item* bag = player->GetItemByPos(INVENTORY_SLOT_BAG_0, slot))
-                player->DestroyItem(INVENTORY_SLOT_BAG_0, slot, true);
+        if (bagEnable)
+        {
+            for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
+                if (Item* bag = player->GetItemByPos(INVENTORY_SLOT_BAG_0, slot))
+                    player->DestroyItem(INVENTORY_SLOT_BAG_0, slot, true);
 
-        for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
-            player->EquipNewItem(slot, 14156, true);
+            for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
+                player->EquipNewItem(slot, (sConfigMgr->GetIntDefault("bagReward.Id", 14156)), true);
+        }
 
         switch (action)
         {
@@ -586,11 +590,365 @@ public:
             sConfigMgr->LoadMore(cfg_def_file.c_str());
             sConfigMgr->LoadMore(cfg_file.c_str());
 
+            // Config For Module
             promotionEnable = sConfigMgr->GetBoolDefault("promotionEnable.enable", true);
             promotionCount = sConfigMgr->GetIntDefault("promotion.count", 1);
             moneyRewardConst = sConfigMgr->GetIntDefault("MoneyRewardValue", 25000000);
             mountPromotion = sConfigMgr->GetIntDefault("mountPromotion", 42277);
             mountEnable = sConfigMgr->GetBoolDefault("mountEnable.enable", true);
+            bagEnable = sConfigMgr->GetBoolDefault("bagEnable.enable", true);
+            bagReward = sConfigMgr->GetIntDefault("bagReward.Id", 14156);
+
+            /*
+            * ARMOR CONFIGURATION FOR CLASSES
+            */
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_HEAD", 41350);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_NECK", 45812);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_SHOULDERS", 41351);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_CHEST", 41353);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_WAIST", 41352);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_LEGS", 41347);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_FEET", 41348);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_WRISTS", 41354);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_HANDS", 41349);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_FINGER1", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_FINGER2", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_TRINKET1", 36993);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_TRINKET2", 38359);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_BACK", 45811);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_MAINHAND", 36984);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_OFFHAND", 37107);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_TANK_RANGED", 36981);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_HEAD", 41350);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_NECK", 45812);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_SHOULDERS", 41351);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_CHEST", 41353);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_WAIST", 41352);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_LEGS", 41347);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_FEET", 41348);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_WRISTS", 41354);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_HANDS", 41349);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_FINGER1", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_FINGER2", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_TRINKET1", 37064);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_TRINKET2", 38359);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_BACK", 45811);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_MAINHAND", 37108);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_OFFHAND", 36962);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARRIOR_DPS_RANGED", 36981);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_HEAD", 41350);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_NECK", 45812);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_SHOULDERS", 41351);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_CHEST", 41353);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_WAIST", 41352);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_LEGS", 41347);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_FEET", 41348);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_WRISTS", 41354);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_HANDS", 41349);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_FINGER1", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_FINGER2", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_TRINKET1", 36993);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_TRINKET2", 38359);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_BACK", 45811);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_MAINHAND", 36984);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_OFFHAND", 37107);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_TANK_RANGED", 38363);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_HEAD", 42728);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_NECK", 45813);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_SHOULDERS", 42727);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_CHEST", 42725);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_WAIST", 42729);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_LEGS", 42726);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_FEET", 42730);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_WRISTS", 42723);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_HANDS", 42724);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_FINGER1", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_FINGER2", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_TRINKET1", 37111);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_TRINKET2", 36972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_BACK", 45810);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_MAINHAND", 37060);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_OFFHAND", 37061);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_HEAL_RANGED", 38364);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_HEAD", 41350);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_NECK", 45812);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_SHOULDERS", 41351);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_CHEST", 41353);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_WAIST", 41352);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_LEGS", 41347);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_FEET", 41348);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_WRISTS", 41354);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_HANDS", 41349);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_FINGER1", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_FINGER2", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_TRINKET1", 37064);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_TRINKET2", 38359);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_BACK", 45811);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_MAINHAND", 37108);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PALADIN_DPS_RANGED", 38362);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_HEAD", 43447);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_NECK", 45812);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_SHOULDERS", 43449);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_CHEST", 43445);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_WAIST", 43442);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_LEGS", 43448);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_FEET", 43443);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_WRISTS", 43444);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_HANDS", 43446);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_FINGER1", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_FINGER2", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_TRINKET1", 37064);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_TRINKET2", 38359);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_BACK", 45811);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_MAINHAND", 36980);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_HUNTER_RANGED", 37050);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_HEAD", 43260);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_NECK", 45812);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_SHOULDERS", 43433);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_CHEST", 43434);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_WAIST", 43437);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_LEGS", 43438);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_FEET", 43439);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_WRISTS", 43435);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_HANDS", 43436);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_FINGER1", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_FINGER2", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_TRINKET1", 37064);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_TRINKET2", 38359);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_BACK", 45811);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_MAINHAND", 36944);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_OFFHAND", 37037);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_RANGED", 36981);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_HEAD", 43971);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_NECK", 45813);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_SHOULDERS", 43973);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_CHEST", 43972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_WAIST", 43969);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_LEGS", 43975);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_FEET", 43970);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_WRISTS", 43974);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_HANDS", 41516);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_FINGER1", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_FINGER2", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_TRINKET1", 36972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_TRINKET2", 37111);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_BACK", 45810);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_MAINHAND", 36975);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_RANGED", 37038);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_HEAD", 43971);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_NECK", 45813);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_SHOULDERS", 43973);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_CHEST", 43972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_WAIST", 43969);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_LEGS", 43975);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_FEET", 43970);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_WRISTS", 43974);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_HANDS", 41516);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_FINGER1", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_FINGER2", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_TRINKET1", 36972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_TRINKET2", 38358);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_BACK", 45810);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_MAINHAND", 36975);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_RANGED", 37038);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_HEAD", 41350);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_NECK", 45812);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_SHOULDERS", 41351);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_CHEST", 41353);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_WAIST", 41352);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_LEGS", 41353);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_FEET", 41348);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_WRISTS", 41354);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_HANDS", 41349);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_FINGER1", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_FINGER2", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_TRINKET1", 37064);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_TRINKET2", 38359);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_BACK", 45811);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_MAINHAND", 37108);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_RANGED", 40867);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_HEAD", 41350);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_NECK", 45812);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_SHOULDERS", 41351);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_CHEST", 41353);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_WAIST", 41352);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_LEGS", 41353);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_FEET", 41348);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_WRISTS", 41354);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_HANDS", 41349);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_FINGER1", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_FINGER2", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_TRINKET1", 37064);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_TRINKET2", 38359);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_BACK", 45811);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_MAINHAND", 37108);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_RANGED", 40867);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_HEAD", 43455);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_NECK", 45813);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_SHOULDERS", 43457);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_CHEST", 43453);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_WAIST", 43450);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_LEGS", 43456);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_FEET", 43451);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_WRISTS", 43452);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_HANDS", 43454);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_FINGER1", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_FINGER2", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_TRINKET1", 36972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_TRINKET2", 38358);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_BACK", 45810);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_MAINHAND", 37112);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_OFFHAND", 37061);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_RANGED", 38361);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_HEAD", 43447);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_NECK", 45812);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_SHOULDERS", 43449);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_CHEST", 43445);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_WAIST", 43442);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_LEGS", 43448);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_FEET", 43443);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_WRISTS", 43444);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_HANDS", 43446);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_FINGER1", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_FINGER2", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_TRINKET1", 37064);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_TRINKET2", 38359);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_BACK", 45811);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_MAINHAND", 35630);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_OFFHAND", 36944);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_RANGED", 38367);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_HEAD", 43455);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_NECK", 45813);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_SHOULDERS", 43457);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_CHEST", 43453);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_WAIST", 43450);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_LEGS", 43456);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_FEET", 43451);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_WRISTS", 43452);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_HANDS", 43454);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_FINGER1", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_FINGER2", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_TRINKET1", 36972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_TRINKET2", 37111);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_BACK", 45810);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_MAINHAND", 37112);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_OFFHAND", 37061);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_RANGED", 38368);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_HEAD", 43971);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_NECK", 45813);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_SHOULDERS", 43973);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_CHEST", 43972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_WAIST", 43969);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_LEGS", 43975);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_FEET", 43970);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_WRISTS", 43974);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_HANDS", 41516);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_FINGER1", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_FINGER2", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_TRINKET1", 36972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_TRINKET2", 38358);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_BACK", 45810);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_MAINHAND", 36975);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_RANGED", 37038);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_HEAD", 43971);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_NECK", 45813);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_SHOULDERS", 43973);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_CHEST", 43972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_WAIST", 43969);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_LEGS", 43975);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_FEET", 43970);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_WRISTS", 43974);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_HANDS", 41516);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_FINGER1", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_FINGER2", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_TRINKET1", 36972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_TRINKET2", 38358);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_BACK", 45810);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_MAINHAND", 36975);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_RANGED", 37038);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_HEAD", 43260);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_NECK", 45812);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_SHOULDERS", 43433);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_CHEST", 43434);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_WAIST", 43437);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_LEGS", 43438);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_FEET", 43439);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_WRISTS", 43435);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_HANDS", 43436);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_FINGER1", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_FINGER2", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_TRINKET1", 37064);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_TRINKET2", 38359);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_BACK", 45811);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_MAINHAND", 36980);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_RANGED", 38365);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_HEAD", 43261);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_NECK", 45813);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_SHOULDERS", 43262);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_CHEST", 43263);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_WAIST", 43266);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_LEGS", 43271);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_FEET", 43273);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_WRISTS", 43264);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_HANDS", 43265);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_FINGER1", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_FINGER2", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_TRINKET1", 36972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_TRINKET2", 37111);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_BACK", 45810);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_MAINHAND", 36975);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_RANGED", 38366);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_HEAD", 43260);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_NECK", 45812);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_SHOULDERS", 43433);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_CHEST", 43434);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_WAIST", 43437);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_LEGS", 43438);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_FEET", 43439);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_WRISTS", 43435);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_HANDS", 43436);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_FINGER1", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_FINGER2", 45809);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_TRINKET1", 37064);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_TRINKET2", 38359);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_BACK", 45811);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_MAINHAND", 36980);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_RANGED", 38365);
+
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_HEAD", 43261);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_NECK", 45813);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_SHOULDERS", 43262);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_CHEST", 43263);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_WAIST", 43266);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_LEGS", 43271);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_FEET", 43273);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_WRISTS", 43264);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_HANDS", 43265);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_FINGER1", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_FINGER2", 45808);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_TRINKET1", 36972);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_TRINKET2", 38358);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_BACK", 45810);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_MAINHAND", 36975);
+            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_RANGED", 38360);
         }
     }
 };
