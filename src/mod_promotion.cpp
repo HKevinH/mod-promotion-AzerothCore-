@@ -295,65 +295,65 @@ public:
 
     void ShamanPromotionCaster(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_SHAMAN_CASTER_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_SHAMAN_CASTER_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_SHAMAN_CASTER_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_SHAMAN_CASTER_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_SHAMAN_CASTER_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_SHAMAN_CASTER_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_SHAMAN_CASTER_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_SHAMAN_CASTER_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_SHAMAN_CASTER_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_SHAMAN_CASTER_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_SHAMAN_CASTER_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_SHAMAN_CASTER_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_SHAMAN_CASTER_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_SHAMAN_CASTER_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_SHAMAN_CASTER_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, EQUIPMENT_SLOT_SHAMAN_CASTER_OFFHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_SHAMAN_CASTER_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_HEAD", 43455)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_NECK", 45813)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_SHOULDERS", 43457)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_CHEST", 43453)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_WAIST", 43450)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_LEGS", 43456)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_FEET", 43451)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_WRISTS", 43452)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_HANDS", 43454)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_FINGER1", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_FINGER2", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_TRINKET1", 36972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_TRINKET2", 38358)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_BACK", 45810)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_MAINHAND", 37112)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_OFFHAND", 37061)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_RANGED", 38361)), true);
     }
 
     void ShamanPromotionMelee(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_SHAMAN_MELEE_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_SHAMAN_MELEE_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_SHAMAN_MELEE_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_SHAMAN_MELEE_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_SHAMAN_MELEE_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_SHAMAN_MELEE_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_SHAMAN_MELEE_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_SHAMAN_MELEE_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_SHAMAN_MELEE_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_SHAMAN_MELEE_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_SHAMAN_MELEE_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_SHAMAN_MELEE_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_SHAMAN_MELEE_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_SHAMAN_MELEE_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_SHAMAN_MELEE_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, EQUIPMENT_SLOT_SHAMAN_MELEE_OFFHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_SHAMAN_MELEE_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_HEAD", 43447)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_NECK", 45812)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_SHOULDERS", 43449)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_CHEST", 43445)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_WAIST", 43442)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_LEGS", 43448)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_FEET", 43443)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_WRISTS", 43444)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_HANDS", 43446)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_FINGER1", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_FINGER2", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_TRINKET1", 37064)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_TRINKET2", 38359)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_BACK", 45811)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_MAINHAND", 35630)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_OFFHAND", 36944)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_MELEE_RANGED", 38367)), true);
     }
 
     void ShamanPromotionHeal(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_SHAMAN_HEAL_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_SHAMAN_HEAL_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_SHAMAN_HEAL_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_SHAMAN_HEAL_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_SHAMAN_HEAL_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_SHAMAN_HEAL_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_SHAMAN_HEAL_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_SHAMAN_HEAL_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_SHAMAN_HEAL_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_SHAMAN_HEAL_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_SHAMAN_HEAL_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_SHAMAN_HEAL_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_SHAMAN_HEAL_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_SHAMAN_HEAL_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_SHAMAN_HEAL_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, EQUIPMENT_SLOT_SHAMAN_HEAL_OFFHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_SHAMAN_HEAL_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_HEAD", 43455)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_NECK", 45813)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_SHOULDERS", 43457)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_CHEST", 43453)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_WAIST", 43450)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_LEGS", 43456)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_FEET", 43451)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_WRISTS", 43452)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_HANDS", 43454)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_FINGER1", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_FINGER2", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_TRINKET1", 36972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_TRINKET2", 37111)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_BACK", 45810)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_MAINHAND", 37112)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_OFFHAND", 37061)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_HEAL_RANGED", 38368)), true);
     }
 
     void MagePromotionDps(Player* player)
@@ -399,82 +399,82 @@ public:
 
     void DruidPromotionTank(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_DRUID_TANK_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_DRUID_TANK_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_DRUID_TANK_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_DRUID_TANK_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_DRUID_TANK_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_DRUID_TANK_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_DRUID_TANK_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_DRUID_TANK_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_DRUID_TANK_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_DRUID_TANK_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_DRUID_TANK_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_DRUID_TANK_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_DRUID_TANK_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_DRUID_TANK_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_DRUID_TANK_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_DRUID_TANK_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_HEAD", 43260)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_NECK", 45812)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_SHOULDERS", 43433)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_CHEST", 43434)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_WAIST", 43437)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_LEGS", 43438)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_FEET", 43439)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_WRISTS", 43435)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_HANDS", 43436)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_FINGER1", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_FINGER2", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_TRINKET1", 37064)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_TRINKET2", 38359)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_BACK", 45811)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_MAINHAND", 36980)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_TANK_RANGED", 38365)), true);
     }
 
     void DruidPromotionHeal(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_DRUID_HEAL_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_DRUID_HEAL_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_DRUID_HEAL_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_DRUID_HEAL_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_DRUID_HEAL_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_DRUID_HEAL_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_DRUID_HEAL_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_DRUID_HEAL_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_DRUID_HEAL_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_DRUID_HEAL_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_DRUID_HEAL_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_DRUID_HEAL_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_DRUID_HEAL_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_DRUID_HEAL_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_DRUID_HEAL_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_DRUID_HEAL_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_HEAD", 43261)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_NECK", 45813)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_SHOULDERS", 43262)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_CHEST", 43263)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_WAIST", 43266)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_LEGS", 43271)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_FEET", 43273)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_WRISTS", 43264)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_HANDS", 43265)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_FINGER1", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_FINGER2", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_TRINKET1", 36972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_TRINKET2", 37111)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_BACK", 45810)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_MAINHAND", 36975)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_HEAL_RANGED", 38366)), true);
     }
 
     void DruidPromotionMelee(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_DRUID_MELEE_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_DRUID_MELEE_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_DRUID_MELEE_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_DRUID_MELEE_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_DRUID_MELEE_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_DRUID_MELEE_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_DRUID_MELEE_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_DRUID_MELEE_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_DRUID_MELEE_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_DRUID_MELEE_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_DRUID_MELEE_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_DRUID_MELEE_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_DRUID_MELEE_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_DRUID_MELEE_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_DRUID_MELEE_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_DRUID_MELEE_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_HEAD", 43260)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_NECK", 45812)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_SHOULDERS", 43433)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_CHEST", 43434)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_WAIST", 43437)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_LEGS", 43438)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_FEET", 43439)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_WRISTS", 43435)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_HANDS", 43436)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_FINGER1", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_FINGER2", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_TRINKET1", 37064)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_TRINKET2", 38359)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_BACK", 45811)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_MAINHAND", 36980)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_MELEE_RANGED", 38365)), true);
     }
 
     void DruidPromotionCaster(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_DRUID_CASTER_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_DRUID_CASTER_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_DRUID_CASTER_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_DRUID_CASTER_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_DRUID_CASTER_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_DRUID_CASTER_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_DRUID_CASTER_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_DRUID_CASTER_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_DRUID_CASTER_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_DRUID_CASTER_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_DRUID_CASTER_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_DRUID_CASTER_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_DRUID_CASTER_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_DRUID_CASTER_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_DRUID_CASTER_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_DRUID_CASTER_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_HEAD", 43261)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_NECK", 45813)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_SHOULDERS", 43262)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_CHEST", 43263)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_WAIST", 43266)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_LEGS", 43271)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_FEET", 43273)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_WRISTS", 43264)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_HANDS", 43265)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_FINGER1", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_FINGER2", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_TRINKET1", 36972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_TRINKET2", 38358)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_BACK", 45810)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_MAINHAND", 36975)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_RANGED", 38360)), true);
     }
 
     bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action)
@@ -501,6 +501,8 @@ public:
         player->learnSpell(SKILL_RIDING_100);
         player->learnSpell(SKILL_RIDING_FLYING);
         player->learnSpell(SKILL_RIDING_ARTISING);
+
+        creature->MonsterWhisper("You Got Your Promotion!", player);
 
         if (mountEnable)
         {
