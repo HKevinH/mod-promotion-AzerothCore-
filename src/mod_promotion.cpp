@@ -255,42 +255,43 @@ public:
 
     void PriestPromotionHeal(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_PRIEST_HEAL_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_PRIEST_HEAL_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_PRIEST_HEAL_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_PRIEST_HEAL_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_PRIEST_HEAL_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_PRIEST_HEAL_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_PRIEST_HEAL_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_PRIEST_HEAL_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_PRIEST_HEAL_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_PRIEST_HEAL_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_PRIEST_HEAL_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_PRIEST_HEAL_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_PRIEST_HEAL_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_PRIEST_HEAL_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_PRIEST_HEAL_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_PRIEST_HEAL_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_HEAD", 43971)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_NECK", 45813)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_SHOULDERS", 43973)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_CHEST", 43972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_WAIST", 43969)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_LEGS", 43975)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_FEET", 43970)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_WRISTS", 43974)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_HANDS", 41516)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_FINGER1", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_FINGER2", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_TRINKET1", 36972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_TRINKET2", 37111)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_BACK", 45810)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_MAINHAND", 36975)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_HEAL_RANGED", 37038)), true);
     }
 
     void PriestPromotionShadow(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_PRIEST_SHADOW_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_PRIEST_SHADOW_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_PRIEST_SHADOW_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_PRIEST_SHADOW_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_PRIEST_SHADOW_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_PRIEST_SHADOW_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_PRIEST_SHADOW_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_PRIEST_SHADOW_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_PRIEST_SHADOW_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_PRIEST_SHADOW_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_PRIEST_SHADOW_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_PRIEST_SHADOW_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_PRIEST_SHADOW_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_PRIEST_SHADOW_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_PRIEST_SHADOW_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_PRIEST_SHADOW_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_HEAD", 43971)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_NECK", 45813)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_SHOULDERS", 43973)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_CHEST", 43972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_WAIST", 43969)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_LEGS", 43975)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_FEET", 43970)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_WRISTS", 43974)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_HANDS", 41516)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_FINGER1", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_FINGER2", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_TRINKET1", 36972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_TRINKET2", 38358)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_BACK", 45810)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_MAINHAND", 36975)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_RANGED", 37038)), true);
+
     }
 
     void ShamanPromotionCaster(Player* player)
