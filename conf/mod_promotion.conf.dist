@@ -64,6 +64,20 @@ MoneyRewardValue = 25000000
 
 #
 #
+#     Level Promotion
+#
+#     Description: Now you can set the level you want for the promotion
+#
+#     Example: 80 - ( Character Level )
+#              70 - ( Character Level )
+#
+#     Default: LevelForPromotion = 80
+#
+
+LevelForPromotion = 80
+
+#
+#
 #     MountPromotion
 #
 #     Description: Here You Put The Spells Of The Promotion Mounts

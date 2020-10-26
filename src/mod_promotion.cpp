@@ -17,7 +17,7 @@
 
 static bool promotionEnable, mountEnable, bagEnable;
 static int promotionCount, moneyRewardConst, mountPromotion, bagReward;
-static int classConfArmor;
+static int classConfArmor, LevelForPromotion;
 
 class announce_module : public PlayerScript{
 public:
@@ -488,10 +488,12 @@ public:
         {
             if (action > GOSSIP_ACTION_INFO_DEF && action < 1020)
                 // Level
-                player->GiveLevel(80);
+                player->GiveLevel(sConfigMgr->GetIntDefault("LevelForPromotion", 80));
 
         //Money 2,5k
          MoneyReward(player);
+
+         // Skill Max
         player->UpdateSkillsToMaxSkillsForLevel();
         // Riding 
         player->learnSpell(SKILL_RIDING_75);
@@ -594,6 +596,7 @@ public:
             promotionEnable = sConfigMgr->GetBoolDefault("promotionEnable.enable", true);
             promotionCount = sConfigMgr->GetIntDefault("promotion.count", 1);
             moneyRewardConst = sConfigMgr->GetIntDefault("MoneyRewardValue", 25000000);
+            LevelForPromotion = sConfigMgr->GetIntDefault("LevelForPromotion", 80);
             mountPromotion = sConfigMgr->GetIntDefault("mountPromotion", 42277);
             mountEnable = sConfigMgr->GetBoolDefault("mountEnable.enable", true);
             bagEnable = sConfigMgr->GetBoolDefault("bagEnable.enable", true);
@@ -759,40 +762,6 @@ public:
             classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_BACK", 45810);
             classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_MAINHAND", 36975);
             classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_PRIEST_SHADOW_RANGED", 37038);
-
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_HEAD", 41350);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_NECK", 45812);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_SHOULDERS", 41351);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_CHEST", 41353);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_WAIST", 41352);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_LEGS", 41353);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_FEET", 41348);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_WRISTS", 41354);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_HANDS", 41349);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_FINGER1", 45809);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_FINGER2", 45809);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_TRINKET1", 37064);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_TRINKET2", 38359);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_BACK", 45811);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_MAINHAND", 37108);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_TANK_RANGED", 40867);
-
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_HEAD", 41350);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_NECK", 45812);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_SHOULDERS", 41351);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_CHEST", 41353);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_WAIST", 41352);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_LEGS", 41353);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_FEET", 41348);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_WRISTS", 41354);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_HANDS", 41349);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_FINGER1", 45809);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_FINGER2", 45809);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_TRINKET1", 37064);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_TRINKET2", 38359);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_BACK", 45811);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_MAINHAND", 37108);
-            classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DK_DPS_RANGED", 40867);
 
             classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_HEAD", 43455);
             classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_SHAMAN_CASTER_NECK", 45813);
