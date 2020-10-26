@@ -234,23 +234,23 @@ public:
 
     void RoguePromotion(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_ROGUE_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_ROGUE_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_ROGUE_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_ROGUE_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_ROGUE_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_ROGUE_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_ROGUE_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_ROGUE_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_ROGUE_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_ROGUE_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_ROGUE_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_ROGUE_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_ROGUE_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_ROGUE_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_ROGUE_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, EQUIPMENT_SLOT_ROGUE_OFFHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_ROGUE_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_HEAD", 43260)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_NECK", 45812)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_SHOULDERS", 43433)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_CHEST", 43434)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_WAIST", 43437)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_LEGS", 43438)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_FEET", 43439)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_WRISTS", 43435)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_HANDS", 43436)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_FINGER1", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_FINGER2", 45809)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_TRINKET1", 37064)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_TRINKET2", 38359)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_BACK", 45811)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_MAINHAND", 36944)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_OFFHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_OFFHAND", 37037)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_ROGUE_RANGED", 36981)), true);
     }
 
     void PriestPromotionHeal(Player* player)
@@ -358,42 +358,43 @@ public:
 
     void MagePromotionDps(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_MAGE_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_MAGE_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_MAGE_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_MAGE_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_MAGE_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_MAGE_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_MAGE_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_MAGE_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_MAGE_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_MAGE_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_MAGE_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_MAGE_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_MAGE_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_MAGE_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_MAGE_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_MAGE_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_HEAD", 43971)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_NECK", 45813)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_SHOULDERS", 43973)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_CHEST", 43972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_WAIST", 43969)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_LEGS", 43975)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_FEET", 43970)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_WRISTS", 43974)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_HANDS", 41516)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_FINGER1", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_FINGER2", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_TRINKET1", 36972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_TRINKET2", 38358)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_BACK", 45810)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_MAINHAND", 36975)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_MAGE_RANGED", 37038)), true);
+
     }
 
     void WarlockPromotionDps(Player* player)
     {
-        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, EQUIPMENT_SLOT_WARLOCK_HEAD, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_NECK, EQUIPMENT_SLOT_WARLOCK_NECK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, EQUIPMENT_SLOT_WARLOCK_SHOULDERS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, EQUIPMENT_SLOT_WARLOCK_CHEST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, EQUIPMENT_SLOT_WARLOCK_WAIST, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, EQUIPMENT_SLOT_WARLOCK_LEGS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FEET, EQUIPMENT_SLOT_WARLOCK_FEET, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, EQUIPMENT_SLOT_WARLOCK_WRISTS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, EQUIPMENT_SLOT_WARLOCK_HANDS, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, EQUIPMENT_SLOT_WARLOCK_FINGER1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, EQUIPMENT_SLOT_WARLOCK_FINGER2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, EQUIPMENT_SLOT_WARLOCK_TRINKET1, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, EQUIPMENT_SLOT_WARLOCK_TRINKET2, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_BACK, EQUIPMENT_SLOT_WARLOCK_BACK, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, EQUIPMENT_SLOT_WARLOCK_MAINHAND, true);
-        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, EQUIPMENT_SLOT_WARLOCK_RANGED, true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HEAD, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_HEAD", 43971)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_NECK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_NECK", 45813)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_SHOULDERS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_SHOULDERS", 43973)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_CHEST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_CHEST", 43972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WAIST, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_WAIST", 43969)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_LEGS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_LEGS", 43975)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FEET, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_FEET", 43970)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_WRISTS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_WRISTS", 43974)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_HANDS, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_HANDS", 41516)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_FINGER1", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_FINGER2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_FINGER2", 45808)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET1, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_TRINKET1", 36972)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_TRINKET2, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_TRINKET2", 38358)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_BACK, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_BACK", 45810)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_MAINHAND, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_MAINHAND", 36975)), true);
+        player->EquipNewItem(EQUIPMENT_SLOT_RANGED, (sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_WARLOCK_RANGED", 37038)), true);
     }
 
     void DruidPromotionTank(Player* player)
