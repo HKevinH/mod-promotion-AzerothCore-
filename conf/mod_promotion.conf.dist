@@ -100,10 +100,12 @@ mountPromotion = 42277
 #   
 #   Default: bagEnable.enable = true (enabled backpacks promotion)
 #   Default: bagReward.Id = 14156 Bottomless Bag Binds when equipped 18 Slot Bag)
+#   Default: automaticallyEquippedbags.enable = true (Allows In The Promotion To Equip The Bags)
 #
 #
 
 bagEnable.enable = true
+equippedbags.enable = true
 bagReward.Id = 41599
 
 ###################################################################################################

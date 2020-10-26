@@ -15,7 +15,7 @@
 #include "mod_promotion.h"
 #include "World.h"
 
-static bool promotionEnable, mountEnable, bagEnable;
+static bool promotionEnable, mountEnable, bagEnable, equippedbags;
 static int promotionCount, moneyRewardConst, mountPromotion, bagReward;
 static int classConfArmor, LevelForPromotion;
 
@@ -484,7 +484,7 @@ public:
         uint32 pjts = fields[0].GetUInt32();
 
         ClearGossipMenuFor(player);
-        if (promotionEnable && pjts)
+        if (promotionEnable && (pjts <= promotionCount))
         {
             if (action > GOSSIP_ACTION_INFO_DEF && action < 1020)
                 // Level
@@ -509,12 +509,20 @@ public:
         //Bags
         if (bagEnable)
         {
-            for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
-                if (Item* bag = player->GetItemByPos(INVENTORY_SLOT_BAG_0, slot))
-                    player->DestroyItem(INVENTORY_SLOT_BAG_0, slot, true);
+            if (equippedbags)
+            {
+                for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
+                    if (Item* bag = player->GetItemByPos(INVENTORY_SLOT_BAG_0, slot))
+                        player->DestroyItem(INVENTORY_SLOT_BAG_0, slot, true);
 
-            for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
-                player->EquipNewItem(slot, (sConfigMgr->GetIntDefault("bagReward.Id", 14156)), true);
+                for (int slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; slot++)
+                    player->EquipNewItem(slot, (sConfigMgr->GetIntDefault("bagReward.Id", 14156)), true);
+            }
+            else
+            {
+                player->AddItem((sConfigMgr->GetIntDefault("bagReward.Id", 14156)), 4);
+            }
+
         }
 
         switch (action)
@@ -600,6 +608,7 @@ public:
             mountPromotion = sConfigMgr->GetIntDefault("mountPromotion", 42277);
             mountEnable = sConfigMgr->GetBoolDefault("mountEnable.enable", true);
             bagEnable = sConfigMgr->GetBoolDefault("bagEnable.enable", true);
+            equippedbags = sConfigMgr->GetBoolDefault("equippedbags.enable", true);
             bagReward = sConfigMgr->GetIntDefault("bagReward.Id", 14156);
 
             /*
