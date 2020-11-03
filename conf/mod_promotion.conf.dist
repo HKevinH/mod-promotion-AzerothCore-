@@ -471,3 +471,11 @@ EQUIPMENT_SLOT_DRUID_CASTER_RANGED = 38360
 ###################################################################################################
 
 ###################################################################################################
+#
+#
+# Teleport Config
+#  Description:
+#  Example: Dalaran (Teleported the Character to Dalaran)
+#
+teleportEnable = true
+homeLocation.promotion = Dalaran

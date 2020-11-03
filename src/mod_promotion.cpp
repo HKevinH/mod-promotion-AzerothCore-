@@ -15,9 +15,10 @@
 #include "mod_promotion.h"
 #include "World.h"
 
-static bool promotionEnable, mountEnable, bagEnable, equippedbags;
+static bool promotionEnable, mountEnable, bagEnable, equippedbags, teleportEnable;
 static int promotionCount, moneyRewardConst, mountPromotion, bagReward;
 static int classConfArmor, LevelForPromotion;
+static string teleportConfig;
 
 class announce_module : public PlayerScript{
 public:
@@ -43,6 +44,9 @@ public:
     bool OnGossipHello(Player* player, Creature* creature) override
     {
         //ChatHandler handler();
+
+        if (player->IsInCombat())
+            return false;
 
         if (player->getClass() == CLASS_DEATH_KNIGHT)
         {
@@ -509,7 +513,7 @@ public:
         {
             player->learnSpell(sConfigMgr->GetIntDefault("mountPromotion", 42777)); //Swift Spectral Tiger
         }
-        
+
         //Bags
         if (bagEnable)
         {
@@ -576,9 +580,29 @@ public:
         }
     }
 
-        else
+        else if (pjts <= promotionCount)
         {
             SendGossipMenuFor(player, 80000, creature);
+            return true;
+        }
+
+        if (sConfigMgr->GetBoolDefault("teleportEnable", true))
+        {
+            std::string homeLocation = sConfigMgr->GetStringDefault("homeLocation.promotion", "Dalaran");
+            QueryResult result = WorldDatabase.PQuery("SELECT `map`, `position_x`, `position_y`, `position_z`, `orientation` FROM game_tele WHERE name = '%s'", homeLocation.c_str());
+
+            do
+            {
+                Field* fields = result->Fetch();
+                uint32 map = fields[0].GetUInt32();
+                float position_x = fields[1].GetFloat();
+                float position_y = fields[2].GetFloat();
+                float position_z = fields[3].GetFloat();
+                float orientation = fields[4].GetFloat();
+
+                player->TeleportTo(map, position_x, position_y, position_z, orientation);
+            } while (result->NextRow());
+            return true;
         }
 
         return true;
@@ -931,6 +955,9 @@ public:
             classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_BACK", 45810);
             classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_MAINHAND", 36975);
             classConfArmor = sConfigMgr->GetIntDefault("EQUIPMENT_SLOT_DRUID_CASTER_RANGED", 38360);
+
+            teleportEnable = sConfigMgr->GetBoolDefault("teleportEnable", true);
+            teleportConfig = sConfigMgr->GetStringDefault("homeLocation.promotion", "Dalaran");
         }
     }
 };
