@@ -4,6 +4,9 @@
 
 Permite Al Owner, Editar Si Permite La Promocion, La Armadura Que Quiera Sin Necesidad De Editarlo En El Codigo Fuente
 
+* Te Permite Modificar El (Oro, Nivel, Cuantos Personaje Por Cuenta) Que Deseas Dar
+* Te Permite Habilitar O Desabilitar Lo Siguiente (Equipacion Automatica Mochilas, Teleport Automatico, El Oro Si Lo Deseas Habiltar) 
+
 -------------------------------------------------------
 
 # Modulo De Promocion (AzerothCore)
@@ -17,6 +20,7 @@ Este Modulo Permite al jugador darle una promocion que consta de lo siguiente.
 * 2,500G De Oro
 * Armadura de Nivel 78
 * Una Montura
+* Al Finalizar Teleporta El Jugador A Dalaran
 
 
 ## Cómo utilizar
