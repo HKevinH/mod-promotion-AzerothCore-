@@ -14,7 +14,7 @@ Allows the owner to edit the armor they want without having to edit it in the so
 
 This module allows you to do this and this.
 This module allows the player to give you a promotion that consists of the following.
-* 1 Level 90 Character per account
+* 1 Level 80 Character per account
 * 4 Backpacks 
 * 2,500G of gold
 * Level 78 armor
