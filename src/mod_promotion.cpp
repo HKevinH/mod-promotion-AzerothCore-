@@ -15,10 +15,14 @@
 #include "mod_promotion.h"
 #include "World.h"
 
+#if AC_COMPILER == AC_COMPILER_GNU
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 static bool promotionEnable, mountEnable, bagEnable, equippedbags, teleportEnable;
 static int promotionCount, moneyRewardConst, mountPromotion, bagReward;
 static int classConfArmor, LevelForPromotion;
-static string teleportConfig;
+std::string teleportConfig;
 
 class announce_module : public PlayerScript{
 public:
@@ -485,9 +489,9 @@ public:
     bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action)
     {
         uint32 accountID = player->GetSession()->GetAccountId();
-        QueryResult result = CharacterDatabase.PQuery("SELECT COUNT(`guid`) FROM `characters` WHERE `account`=%u", accountID);
+        QueryResult result = CharacterDatabase.Query("SELECT COUNT(`guid`) FROM `characters` WHERE `account`={}", accountID);
         Field* fields = result->Fetch();
-        uint32 pjts = fields[0].GetUInt32();
+        uint32 pjts = fields[0].Get<uint32>();
 
         ClearGossipMenuFor(player);
         if (promotionEnable && (pjts <= promotionCount))
@@ -507,7 +511,7 @@ public:
         player->learnSpell(SKILL_RIDING_FLYING);
         player->learnSpell(SKILL_RIDING_ARTISING);
 
-        creature->MonsterWhisper("You Got Your Promotion!", player);
+        //creature->MonsterWhisper("You Got Your Promotion!", player);
 
         if (mountEnable)
         {
@@ -589,16 +593,16 @@ public:
         if (sConfigMgr->GetBoolDefault("teleportEnable", true))
         {
             std::string homeLocation = sConfigMgr->GetStringDefault("homeLocation.promotion", "Dalaran");
-            QueryResult result = WorldDatabase.PQuery("SELECT `map`, `position_x`, `position_y`, `position_z`, `orientation` FROM game_tele WHERE name = '%s'", homeLocation.c_str());
+            QueryResult result = WorldDatabase.Query("SELECT `map`, `position_x`, `position_y`, `position_z`, `orientation` FROM game_tele WHERE name = '{}'", homeLocation.c_str());
 
             do
             {
                 Field* fields = result->Fetch();
-                uint32 map = fields[0].GetUInt32();
-                float position_x = fields[1].GetFloat();
-                float position_y = fields[2].GetFloat();
-                float position_z = fields[3].GetFloat();
-                float orientation = fields[4].GetFloat();
+                uint32 map = fields[0].Get<uint32>();
+                float position_x = fields[1].Get<float>();
+                float position_y = fields[2].Get<float>();
+                float position_z = fields[3].Get<float>();
+                float orientation = fields[4].Get<float>();
 
                 player->TeleportTo(map, position_x, position_y, position_z, orientation);
             } while (result->NextRow());
@@ -619,14 +623,13 @@ public:
         if (!reload)
         {
             std::string conf_path = _CONF_DIR;
-            std::string cfg_file = conf_path + "/mod_promotion.conf.conf";
+            std::string cfg_file = conf_path + "/mod_promotion.conf";
 #ifdef WIN32
-            cfg_file = "mod_promotion.conf.conf";
+            cfg_file = "mod_promotion.conf";
 #endif
             std::string cfg_def_file = cfg_file + ".dist";
 
-            sConfigMgr->LoadMore(cfg_def_file.c_str());
-            sConfigMgr->LoadMore(cfg_file.c_str());
+            sConfigMgr->LoadModulesConfigs();
 
             // Config For Module
             promotionEnable = sConfigMgr->GetBoolDefault("promotionEnable.enable", true);
@@ -962,7 +965,7 @@ public:
     }
 };
 
-void AddSC_npc_promotion()
+void Addnpc_promotion()
 {
     new announce_module();
     new npc_promotion();
